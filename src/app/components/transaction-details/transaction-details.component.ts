@@ -28,6 +28,7 @@ export class TransactionDetailsComponent implements OnInit {
   showBlockData = false;
 
   amountRaw = new BigNumber(0);
+  timestamp = new Date();
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -55,6 +56,7 @@ export class TransactionDetailsComponent implements OnInit {
     this.showBlockData = false;
     let legacyFromAccount = '';
     this.amountRaw = new BigNumber(0);
+    this.timestamp = new Date();
     const hash = this.route.snapshot.params.transaction;
     this.hashID = hash;
     const blockData = await this.api.blocksInfo([hash]);
@@ -99,6 +101,9 @@ export class TransactionDetailsComponent implements OnInit {
     }
     if (hashData.amount) {
       this.amountRaw = new BigNumber(hashData.amount).mod(this.banoshi);
+    }
+    if (hashData.local_timestamp) {
+      this.timestamp = new Date(hashData.local_timestamp*1000);
     }
 
     this.transaction = hashData;
