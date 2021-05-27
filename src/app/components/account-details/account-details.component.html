@@ -187,7 +187,7 @@
               </tr>
 
               <tr *ngFor="let history of accountHistory">
-                <td class="uk-text-truncate" *ngIf="history.local_timestamp">{{ history.local_timestamp | date: 'short' }}</td>
+                <td class="uk-text-truncate" *ngIf="history.local_timestamp">{{ history.local_timestamp*1000 | date: 'short' }}</td>
                 <td class="uk-text-truncate uk-text-muted" *ngIf="!history.local_timestamp">N/A</td>
                 <td class="uk-visible-toggle">
                   <div uk-grid>
