@@ -107,7 +107,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
           this.pendingBlocks.push({
             account: pending.blocks[block].source,
             amount: pending.blocks[block].amount,
-            timestamp: pending.blocks[block].local_timestamp,
+            timestamp: pending.blocks[block].local_timestamp*1000,
             addressBookName: this.addressBook.getAccountName(pending.blocks[block].source) || null,
             hash: block,
           });
